@@ -48,6 +48,8 @@ namespace Lesson_15
                 geomProgression.getNext();
                 Console.Write(geomProgression.value + " ");
             }
+            geomProgression.reset();
+            Console.WriteLine("\nЗначение после вызова метода reset равно : {0}\n", geomProgression.value);
             Console.ReadKey();
         }
     }
@@ -64,6 +66,7 @@ namespace Lesson_15
 
         public int value { get; set; }
         public int difference;
+        public int valueStart;
         public ArithProgression(int difference)
         {
             this.difference = difference;
@@ -71,6 +74,7 @@ namespace Lesson_15
         public void setStart()
         {
             value = Convert.ToInt32(Console.ReadLine());
+            valueStart = value;
         }
         public int getNext()
         {
@@ -79,7 +83,7 @@ namespace Lesson_15
         }
         public void reset()
         {
-            value = 0;
+            value = valueStart;
             return;
         }
     }
@@ -88,7 +92,8 @@ namespace Lesson_15
     {
 
         public int value;
-      
+        public int valueStart;
+
         public int denominator;
         public GeomProgression(int denominator)
         {
@@ -98,7 +103,8 @@ namespace Lesson_15
         public void setStart()
         {
             value = Convert.ToInt32(Console.ReadLine());
-        }
+            valueStart=value;
+    }
         
         public int getNext()
         {
@@ -110,7 +116,7 @@ namespace Lesson_15
 
         public void reset()
         {
-            value = 0;
+            value = valueStart;
             return;
         }
     }
