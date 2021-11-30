@@ -16,52 +16,49 @@ namespace Lesson_15
         //В классах реализовать методы интерфейса в соответствии с логикой арифметической и геометрической прогрессии соответственно.
         static void Main(string[] args)
         {
-            //Console.WriteLine("Введите разность арифметической прогрессии "); // Из условия не понятно нужно ли реализовывать выбор разнисти прогрессии , принял решение сделать вызова метода.
-            //int diff = Convert.ToInt32(Console.ReadLine());
-            //ArithProgression arithProgression = new ArithProgression(diff);
-            //Console.WriteLine("Введите длину ряда чисел");
-            //int series = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите разность арифметической прогрессии "); // Из условия не понятно нужно ли реализовывать выбор разнисти прогрессии , принял решение сделать вызова метода.
+            int diff = Convert.ToInt32(Console.ReadLine());
+            ArithProgression arithProgression = new ArithProgression(diff);
+            Console.WriteLine("Введите длину ряда чисел");
+            int series = Convert.ToInt32(Console.ReadLine());
 
-            //Console.WriteLine("Введите начальное значение");
-            //arithProgression.setStart();
+            Console.WriteLine("Введите начальное значение");
+            arithProgression.setStart();
 
-            //for (int i = 0; i < series; i++)
-            //{
-            //    arithProgression.getNext();
-            //    Console.Write(arithProgression.value + " ");
-            //}
-            //Console.WriteLine("\nПоследнее число в ряду равно : {0}\n", arithProgression.value);
-            //arithProgression.reset();
-            //Console.WriteLine("\n Значение после вызова метода reset равно : {0}", arithProgression.value);
+            for (int i = 0; i < series; i++)
+            {
+                arithProgression.getNext();
+                Console.Write(arithProgression.value + " ");
+            }
+            Console.WriteLine("\nПоследнее число в ряду равно : {0}\n", arithProgression.value);
+            arithProgression.reset();
+            Console.WriteLine("\nЗначение после вызова метода reset равно : {0}\n", arithProgression.value);
 
 
-            //Console.ReadKey();
-
-            Console.WriteLine("Введите значение знаменателеz геометрической прогрессии");
+            Console.WriteLine("Введите значение знаменателея геометрической прогрессии");
             int denom = Convert.ToInt32(Console.ReadLine());
             GeomProgression geomProgression = new GeomProgression(denom);
             Console.WriteLine("Введите длину ряда чисел");
-            int series = Convert.ToInt32(Console.ReadLine());
+            series = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите начальное значение");
             geomProgression.setStart();
 
             for (int i = 0; i < series; i++)
             {
                 geomProgression.getNext();
-                Console.Write(geomProgression.n + " ");
-                geomProgression.n+=1;
+                Console.Write(geomProgression.value + " ");
             }
-            //geomProgression.getNext();
-            //Console.Write(geomProgression.n + " ");
             Console.ReadKey();
         }
     }
+    //Создаем интерфейс с методами setStart(),getNext(),reset()
     interface ISeries
     {
         void setStart();
         int getNext();
         void reset();
     }
+    //Создаем класс Арифм.прогрессии и реализуем интерфейс
     class ArithProgression : ISeries
     {
 
@@ -86,11 +83,12 @@ namespace Lesson_15
             return;
         }
     }
+    //Создаем класс Геометр. прогрессии и реализуем интерфейс
     class GeomProgression : ISeries
     {
 
         public int value;
-        public int n;
+      
         public int denominator;
         public GeomProgression(int denominator)
         {
@@ -105,7 +103,7 @@ namespace Lesson_15
         public int getNext()
         {
             
-            value=Convert.ToInt32(value*(Math.Pow(denominator,n-1)));
+            value=value*denominator;
             
             return value;
         }
